@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<title>HVT Website Design Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --amber: #ffa033; --amber-deep: #f07800; --amber-ink: #9a4a00; --amber-soft: #fff1df;
+    --ink: #171b20; --navy-950: #081321; --navy-900: #0c1a2b; --navy-800: #12243a; --navy-line: #233a5b;
+    --slate: #647181; --line: #c9d1da; --page: #e7ebef; --mist: #f3f5f7;
+  }
+  @page { size: A4 landscape; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; }
+  body { font-family: Inter, system-ui, sans-serif; color: var(--ink); font-size: 10.5pt; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  h1, h2, h3, h4 { font-family: Manrope, Inter, sans-serif; letter-spacing: -0.02em; line-height: 1.1; }
+
+  .page { width: 297mm; height: 210mm; position: relative; overflow: hidden; page-break-after: always; break-after: page; background: var(--page); padding: 15mm 16mm 14mm; display: flex; flex-direction: column; }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+  .page.dark { background: var(--navy-950); color: #fff; }
+  .page.light { background: var(--mist); }
+
+  /* running header/footer */
+  .run { display: flex; justify-content: space-between; align-items: center; font-size: 7.5pt; color: var(--slate); letter-spacing: .08em; text-transform: uppercase; font-weight: 600; margin-bottom: 7mm; }
+  .run img { height: 7mm; }
+  .dark .run { color: rgba(255,255,255,.5); }
+  .foot { position: absolute; left: 16mm; right: 16mm; bottom: 8mm; display: flex; justify-content: space-between; font-size: 7pt; color: var(--slate); }
+  .dark .foot { color: rgba(255,255,255,.45); }
+
+  .eyebrow { font-family: Manrope, sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--amber-ink); display: flex; align-items: center; gap: 3mm; margin-bottom: 3.5mm; }
+  .eyebrow::before { content: ""; width: 8mm; height: 1px; background: currentColor; }
+  .dark .eyebrow { color: var(--amber); }
+  .title { font-size: 24pt; font-weight: 700; margin-bottom: 4mm; }
+  .title .mute { opacity: .5; }
+  .lead { font-size: 11pt; color: rgba(23,27,32,.75); max-width: 165mm; }
+  .dark .lead { color: rgba(255,255,255,.75); }
+
+  /* screenshot frames */
+  .shot { border-radius: 3.2mm; overflow: hidden; background: #fff; box-shadow: 0 6mm 12mm -6mm rgba(8,19,33,.45), 0 0 0 .3mm rgba(8,19,33,.08); }
+  .shot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .bar { height: 5mm; background: #e9edf1; display: flex; align-items: center; gap: 1.4mm; padding-left: 3mm; }
+  .bar i { width: 1.6mm; height: 1.6mm; border-radius: 50%; background: #c3cbd3; display: block; }
+  .bar span { margin-left: 4mm; font-size: 6pt; color: var(--slate); background: #fff; border-radius: 1mm; padding: .3mm 3mm; }
+  .dark .shot { box-shadow: 0 8mm 16mm -6mm rgba(0,0,0,.7), 0 0 0 .3mm rgba(255,255,255,.08); }
+
+  .cap { margin-top: 3mm; }
+  .cap b { font-family: Manrope, sans-serif; font-size: 10.5pt; display: block; margin-bottom: .8mm; }
+  .cap p { font-size: 8.8pt; color: rgba(23,27,32,.72); }
+  .dark .cap p { color: rgba(255,255,255,.7); }
+  .num { font-family: Manrope, sans-serif; font-weight: 800; color: var(--amber-deep); margin-right: 1.5mm; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 9mm; flex: 1; min-height: 0; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7mm; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6mm; }
+  .col { display: flex; flex-direction: column; min-height: 0; justify-content: flex-start; }
+  .col .shot img { aspect-ratio: 16 / 10; height: auto; }
+  .grid2 { align-content: start; } .grid3, .grid4 { align-content: start; }
+
+  /* cover */
+  .cover { padding: 0; }
+  .cover .bg { position: absolute; inset: 0; }
+  .cover .bg img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 40%; }
+  .cover .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,19,33,.97) 0%, rgba(8,19,33,.88) 42%, rgba(8,19,33,.35) 100%); }
+  .cover .inner { position: relative; height: 100%; padding: 18mm 20mm 16mm; display: flex; flex-direction: column; }
+  .cover .logo { height: 17mm; align-self: flex-start; }
+  .cover h1 { font-size: 40pt; font-weight: 700; margin-top: auto; max-width: 160mm; }
+  .cover h1 span { color: rgba(255,255,255,.62); }
+  .cover .sub { margin-top: 6mm; font-size: 12.5pt; color: rgba(255,255,255,.78); max-width: 140mm; }
+  .cover .meta { margin-top: 12mm; display: flex; gap: 10mm; font-size: 8.5pt; color: rgba(255,255,255,.6); border-top: 1px solid rgba(255,255,255,.15); padding-top: 5mm; }
+  .cover .meta b { display: block; color: #fff; font-family: Manrope, sans-serif; font-size: 10pt; margin-top: .8mm; }
+  .chip { display: inline-block; border: 1px solid rgba(255,160,51,.6); color: var(--amber); border-radius: 99px; padding: 1mm 3.5mm; font-size: 7.5pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+
+  /* cards */
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 3.5mm; padding: 6mm; }
+  .card h3 { font-size: 12pt; margin-bottom: 2mm; }
+  .card p, .card li { font-size: 9pt; color: rgba(23,27,32,.75); }
+  .card ul { list-style: none; display: grid; gap: 1.6mm; }
+  .card li { padding-left: 4.5mm; position: relative; }
+  .card li::before { content: ""; position: absolute; left: 0; top: 2.1mm; width: 2.5mm; height: 1px; background: var(--amber-deep); }
+  .tight .title { font-size: 21pt; }
+  .tight .card { padding: 4.5mm 5.5mm; }
+  .tight .icon { margin-bottom: 2.5mm; }
+  .card.ink { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .card.ink p, .card.ink li { color: rgba(255,255,255,.78); }
+  .icon { width: 9mm; height: 9mm; border-radius: 2.2mm; background: var(--ink); color: var(--amber); display: grid; place-items: center; font-family: Manrope, sans-serif; font-weight: 800; font-size: 10pt; margin-bottom: 4mm; }
+
+  /* swatches */
+  .sw { border-radius: 3mm; overflow: hidden; border: 1px solid var(--line); background: #fff; }
+  .sw .c { height: 22mm; }
+  .sw .t { padding: 2.5mm 3mm; font-size: 8pt; }
+  .sw .t b { font-family: Manrope, sans-serif; display: block; font-size: 9pt; }
+  .sw .t span { color: var(--slate); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 8.6pt; background: #fff; border-radius: 3mm; overflow: hidden; }
+  th { text-align: left; background: var(--ink); color: #fff; font-family: Manrope, sans-serif; font-weight: 700; padding: 2.6mm 3.5mm; font-size: 8.4pt; }
+  td { padding: 2.6mm 3.5mm; border-bottom: 1px solid #e3e8ed; vertical-align: top; color: rgba(23,27,32,.85); }
+  tr:last-child td { border-bottom: 0; }
+  td b { font-family: Manrope, sans-serif; color: var(--ink); }
+  .used { color: var(--amber-ink); font-weight: 700; }
+
+  .check { list-style: none; display: grid; gap: 2.4mm; }
+  .check li { display: grid; grid-template-columns: 5mm 1fr; gap: 3mm; font-size: 9.2pt; color: rgba(23,27,32,.85); }
+  .check li::before { content: ""; width: 4mm; height: 4mm; border: 1.3px solid var(--ink); border-radius: 1mm; margin-top: .6mm; }
+  .check b { font-family: Manrope, sans-serif; color: var(--ink); }
+  .card .check li { padding-left: 0; }
+  .card .check li::before { position: static; width: 4mm; height: 4mm; background: none; top: auto; }
+
+  .phone { border-radius: 6mm; overflow: hidden; border: 1.6mm solid #0b1118; background: #0b1118; box-shadow: 0 8mm 14mm -6mm rgba(8,19,33,.55); aspect-ratio: 390 / 844; }
+  .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; border-radius: 4.4mm; }
+</style>
+</head>
+<body>
+
+<!-- 1. COVER -->
+<section class="page cover dark">
+  <div class="bg"><img src="img/hero-transmission-sunset.jpg" alt=""></div>
+  <div class="inner">
+    <img class="logo" src="brand/hvt-logo-white.svg" alt="HVT High Voltage Technology">
+    <span class="chip" style="margin-top:auto;align-self:flex-start">Draft for review</span>
+    <h1 style="margin-top:6mm">Website design review <span>— the current design.</span></h1>
+    <p class="sub">A walkthrough of the new HVT website: the design direction, every homepage section, the key inner pages and the mobile experience, plus the points we need HVT to confirm before launch.</p>
+    <div class="meta">
+      <div>Prepared for<b>High Voltage Technology SA (Pty) Ltd</b></div>
+      <div>Date<b>19 October 2026</b></div>
+      <div>Status<b>Working preview, not yet live</b></div>
+    </div>
+    <p style="position:absolute;right:20mm;bottom:8mm;font-size:6.5pt;color:rgba(255,255,255,.45)">Cover image: illustrative, “Transmission Lines at Sunset” by Kkiefuik, CC BY 4.0</p>
+  </div>
+</section>
+
+<!-- 2. AT A GLANCE -->
+<section class="page light tight">
+  <div class="run"><img src="brand/hvt-logo-colour.svg" alt=""><span>Website design review</span></div>
+  <p class="eyebrow">At a glance</p>
+  <h2 class="title">A corporate website built to win the confidence <span class="mute">of utilities, EPC contractors and industrial clients.</span></h2>
+  <p class="lead">The new site presents HVT as an established Southern African engineering group: technically capable, safety-led and ready for major infrastructure work. It is a complete, working website, not a mock-up. Everything shown in this document is a screenshot of the working preview.</p>
+
+  <div class="grid4" style="margin-top:6mm">
+    <div class="card"><div class="icon">1</div><h3>Homepage</h3><p>Twelve sections, from the hero to the project enquiry form, telling HVT’s story in a clear order.</p></div>
+    <div class="card"><div class="icon">8</div><h3>Service pages</h3><p>One page for each HVT service line, with its full scope of work and a pre-selected enquiry form.</p></div>
+    <div class="card"><div class="icon">4</div><h3>Project pages</h3><p>Groeipunt, Bokmakierie, Mount Edgecombe and Kaalfontein, each with its photograph gallery.</p></div>
+    <div class="card"><div class="icon">6</div><h3>Company pages</h3><p>About, Quality &amp; Safety, Social Impact, Contact, Privacy Notice and Image Credits.</p></div>
+  </div>
+
+  <div class="grid2" style="margin-top:7mm;flex:none">
+    <div class="card ink">
+      <h3 style="color:#fff">What the design sets out to communicate</h3>
+      <ul style="margin-top:3mm">
+        <li><b style="color:#fff">Engineering excellence:</b> precise, technically capable and dependable</li>
+        <li><b style="color:#fff">Industrial credibility:</b> real projects, shown in HVT’s own photographs</li>
+        <li><b style="color:#fff">Safety and quality:</b> SHEQ leadership and ISO 9001:2015 certification</li>
+        <li><b style="color:#fff">Scale and ambition:</b> work from 3.3kV to 765kV across the region</li>
+        <li><b style="color:#fff">Southern African relevance:</b> a long-term partner to Eskom and utilities</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Built in from the start</h3>
+      <ul style="margin-top:3mm">
+        <li>Designed for phones and tablets as carefully as for desktop screens</li>
+        <li>Keyboard-accessible navigation, with colour contrast chosen for readability</li>
+        <li>Search-engine foundations: page titles, descriptions, sitemap and company details</li>
+        <li>A project enquiry form with clear validation and POPIA-aware consent</li>
+        <li>No advertising or tracking cookies</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>HVT · Website design review</span><span>2</span></div>
+</section>
+
+<!-- 3. DESIGN DIRECTION -->
+<section class="page">
+  <div class="run"><img src="brand/hvt-logo-colour.svg" alt=""><span>Design direction</span></div>
+  <p class="eyebrow">Design direction</p>
+  <h2 class="title">Built on HVT’s existing identity, <span class="mute">refined for a premium digital presence.</span></h2>
+
+  <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:10mm;margin-top:4mm">
+    <div>
+      <h3 style="font-size:12pt;margin-bottom:3mm">Colour</h3>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:3mm">
+        <div class="sw"><div class="c" style="background:linear-gradient(180deg,#ffa033,#f07800)"></div><div class="t"><b>Signal amber</b><span>#FFA033 → #F07800</span></div></div>
+        <div class="sw"><div class="c" style="background:#081321"></div><div class="t"><b>Midnight navy</b><span>#081321</span></div></div>
+        <div class="sw"><div class="c" style="background:#171b20"></div><div class="t"><b>Deep charcoal</b><span>#171B20</span></div></div>
+        <div class="sw"><div class="c" style="background:#647181"></div><div class="t"><b>Slate grey</b><span>#647181</span></div></div>
+        <div class="sw"><div class="c" style="background:#f3f5f7"></div><div class="t"><b>Light grey</b><span>#F3F5F7</span></div></div>
+      </div>
+      <p style="font-size:9pt;color:rgba(23,27,32,.75);margin-top:3.5mm">The amber is taken directly from the HVT logo’s gradient. It is used sparingly, for buttons, labels and key figures, so it signals importance. Navy, charcoal and soft greys carry the rest of the design.</p>
+
+      <h3 style="font-size:12pt;margin:7mm 0 3mm">Typography</h3>
+      <div class="card" style="padding:5mm 6mm">
+        <p style="font-family:Manrope;font-weight:700;font-size:24pt;letter-spacing:-.02em;color:var(--ink);line-height:1.05">Powering the infrastructure <span style="opacity:.5">that moves Southern Africa forward.</span></p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6mm;margin-top:4mm">
+          <p><b style="font-family:Manrope">Manrope</b> for headings: confident and modern, with a two-tone treatment that gives headlines emphasis.</p>
+          <p><b style="font-family:Manrope">Inter</b> for body text: highly legible at every size, on screens of every kind.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3 style="font-size:12pt;margin-bottom:3mm">Logo</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+        <div class="card" style="display:grid;place-items:center;height:30mm"><img src="brand/hvt-logo-colour.svg" style="height:13mm" alt=""></div>
+        <div class="card" style="display:grid;place-items:center;height:30mm;background:var(--navy-950);border-color:var(--navy-950)"><img src="brand/hvt-logo-white.svg" style="height:13mm" alt=""></div>
+      </div>
+      <p style="font-size:9pt;color:rgba(23,27,32,.75);margin-top:3mm">The supplied HVT artwork is used exactly as provided: the colour logo on light backgrounds, the reversed logo on dark, and the pylon symbol for the browser icon.</p>
+
+      <h3 style="font-size:12pt;margin:7mm 0 3mm">Photography</h3>
+      <div class="card">
+        <ul>
+          <li><b>HVT’s own photographs</b> for every project and service: real HVT sites and teams, captioned with the project they come from.</li>
+          <li><b>A few atmospheric images</b> (dusk transmission lines and substations) in the hero and banners. These are openly licensed, labelled “Illustrative image” and never presented as HVT projects.</li>
+          <li>Dark, cinematic overlays give HVT’s daylight site photos a consistent, premium feel.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>HVT · Website design review</span><span>3</span></div>
+</section>
+
+<!-- 4. HOMEPAGE HERO -->
+<section class="page dark">
+  <div class="run"><img src="brand/hvt-logo-white.svg" alt=""><span>Homepage · first impression</span></div>
+  <div style="display:grid;grid-template-columns:1fr 2.3fr;gap:10mm;flex:1;min-height:0">
+    <div style="display:flex;flex-direction:column;justify-content:center">
+      <p class="eyebrow">Homepage · Hero</p>
+      <h2 class="title" style="font-size:21pt">The first five seconds.</h2>
+      <p class="lead" style="font-size:9.8pt">A full-width, cinematic hero establishes immediately what HVT does and who it serves.</p>
+      <ul style="list-style:none;margin-top:6mm;display:grid;gap:3mm;font-size:9pt;color:rgba(255,255,255,.8)">
+        <li><span class="num">01</span>A clear headline and HVT’s own “Can do” positioning</li>
+        <li><span class="num">02</span>A prominent amber <b>Discuss Your Project</b> button that goes straight to the enquiry form</li>
+        <li><span class="num">03</span>Quick routes to Services, Projects and Quality &amp; Safety</li>
+        <li><span class="num">04</span>A slow, three-image slideshow with a pause control</li>
+        <li><span class="num">05</span>A sticky header with a services menu and an always-visible <b>Discuss a Project</b> button</li>
+      </ul>
+    </div>
+    <div class="col"><div class="shot"><div class="bar"><i></i><i></i><i></i><span>hvt.co.za</span></div><img src="shots/d-home-hero.jpg" alt=""></div></div>
+  </div>
+  <div class="foot"><span>HVT · Website design review</span><span>4</span></div>
+</section>
+
+<!-- 5. INTRO + CAPABILITY -->
+<section class="page">
+  <div class="run"><img src="brand/hvt-logo-colour.svg" alt=""><span>Homepage · walkthrough</span></div>
+  <p class="eyebrow">Homepage · 02–03</p>
+  <h2 class="title" style="font-size:20pt">Who HVT is, <span class="mute">and what it can deliver.</span></h2>
+  <div class="grid2" style="margin-top:4mm">
+    <div class="col">
+      <div class="shot"><img src="shots/d-home-intro.jpg" alt=""></div>
+      <div class="cap"><b><span class="num">02</span>About HVT</b><p>A pinned introduction sits beside cards that scroll past it: established in 1994 as a long-term supplier to Eskom, HVT’s vision, the “Empower the person” philosophy and the four core values.</p></div>
+    </div>
+    <div class="col">
+      <div class="shot"><img src="shots/d-home-capability.jpg" alt=""></div>
+      <div class="cap"><b><span class="num">03</span>Delivery capability</b><p>A frosted-glass panel over a dusk substation highlights HVT’s eight fully equipped crews, trained and accredited up to 765kV, with a link to Substation Site Services.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>HVT · Website design review</span><span>5</span></div>
+</section>
+
+<!-- 6. KINETIC + SERVICES -->
+<section class="page">
+  <div class="run"><img src="brand/hvt-logo-colour.svg" alt=""><span>Homepage · walkthrough</span></div>
+  <p class="eyebrow">Homepage · 04–05</p>
+  <h2 class="title" style="font-size:20pt">What HVT does, <span class="mute">at a glance.</span></h2>
+  <div class="grid2" style="margin-top:4mm">
+    <div class="col">
+      <div class="shot"><img src="shots/d-home-kinetic.jpg" alt=""></div>
+      <div class="cap"><b><span class="num">04</span>Transmission · Distribution · Substations</b><p>Oversized lettering that drifts gently as the visitor scrolls, framing an HVT photograph from the Bokmakierie Substation. It is a bold statement of HVT’s field.</p></div>
+    </div>
+    <div class="col">
+      <div class="shot"><img src="shots/d-home-services-cards.jpg" alt=""></div>
+      <div class="cap"><b><span class="num">05</span>Core capabilities</b><p>Eight numbered service cards on a dark navy panel, each with an HVT photograph, a short description and an amber <b>Explore Service</b> bar leading to its own page.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>HVT · Website design review</span><span>6</span></div>
+</section>
+
+<!-- 7. CREDENTIALS + PROJECTS -->
+<section class="page">
+  <div class="run"><img src="brand/hvt-logo-colour.svg" alt=""><span>Homepage · walkthrough</span></div>
+  <p class="eyebrow">Homepage · 06–07</p>
+  <h2 class="title" style="font-size:20pt">The proof, <span class="mute">from HVT’s published track record.</span></h2>
+  <div class="grid2" style="margin-top:4mm">
+    <div class="col">
+      <div class="shot"><img src="shots/d-home-credentials.jpg" alt=""></div>
+      <div class="cap"><b><span class="num">06</span>Credentials &amp; track record</b><p>A headline statement built on HVT’s published track record, followed by the key credentials (BBBEE Level 3, CIDB 8EP · 7CE, ISO 9001:2015, crews up to 765kV) and a summary of delivery capability.</p></div>
+    </div>
+    <div class="col">
+      <div class="shot"><img src="shots/d-home-projects.jpg" alt=""></div>
+      <div class="cap"><b><span class="num">07</span>Featured projects</b><p>Full-width project banners for Groeipunt Substation, Bokmakierie Substation and the Mount Edgecombe Interchange, each with the facts HVT has published and a <b>View Project</b> button.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>HVT · Website design review</span><span>7</span></div>
+</section>
+
+<!-- 8. TESTIMONIAL + SHEQ -->
+<section class="page">
+  <div class="run"><img src="brand/hvt-logo-colour.svg" alt=""><span>Homepage · walkthrough</span></div>
+  <p class="eyebrow">Homepage · 08–09</p>
+  <h2 class="title" style="font-size:20pt">Safety and responsibility, <span class="mute">front and centre.</span></h2>
+  <div class="grid2" style="margin-top:4mm">
+    <div class="col">
+      <div class="shot"><img src="shots/d-home-testimonial.jpg" alt=""></div>
+      <div class="cap"><b><span class="num">08</span>Client feedback</b><p>The Eskom compliment on HVT’s on-site safety awareness, reproduced word for word with its published attribution. No other testimonials are used.</p></div>
+    </div>
+    <div class="col">
+      <div class="shot"><img src="shots/d-home-sheq.jpg" alt=""></div>
+      <div class="cap"><b><span class="num">09</span>Safety and social impact stories</b><p>Two editorial feature panels. One covers SHEQ leadership (the SHEQ office reports directly to the CEO). The other covers enterprise development and support for emerging contractors.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>HVT · Website design review</span><span>8</span></div>
+</section>
+
+<!-- 9. WHY + ENQUIRY -->
+<section class="page">
+  <div class="run"><img src="brand/hvt-logo-colour.svg" alt=""><span>Homepage · walkthrough</span></div>
+  <p class="eyebrow">Homepage · 10–11</p>
+  <h2 class="title" style="font-size:20pt">From reasons to choose HVT <span class="mute">to starting a conversation.</span></h2>
+  <div class="grid2" style="margin-top:4mm">
+    <div class="col">
+      <div class="shot"><img src="shots/d-home-why.jpg" alt=""></div>
+      <div class="cap"><b><span class="num">10</span>Why work with HVT?</b><p>Six specific reasons, each linked to supporting detail: the “Can do” approach, service breadth, technical depth, OEM relationships, SHEQ management and Southern African focus.</p></div>
+    </div>
+    <div class="col">
+      <div class="shot"><img src="shots/d-home-enquiry.jpg" alt=""></div>
+      <div class="cap"><b><span class="num">11</span>Project enquiry</b><p>Direct phone, email and head-office details beside a structured enquiry form: name, company, contact details, service of interest, project location and project details.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>HVT · Website design review</span><span>9</span></div>
+</section>
+
+<!-- 10. NAVIGATION -->
+<section class="page dark">
+  <div class="run"><img src="brand/hvt-logo-white.svg" alt=""><span>Navigation</span></div>
+  <p class="eyebrow">Navigation</p>
+  <h2 class="title" style="font-size:20pt">Every service is one click away, <span class="mute">from any page.</span></h2>
+  <div class="grid3" style="flex:1;min-height:0;margin-top:3mm">
+    <div class="col">
+      <div class="shot"><img src="shots/d-mega-menu.jpg" alt=""></div>
+      <div class="cap"><b>Services menu</b><p>Hovering over Services opens a panel listing all eight service lines.</p></div>
+    </div>
+    <div class="col">
+      <div class="shot"><img src="shots/d-menu-overlay.jpg" alt=""></div>
+      <div class="cap"><b>Full menu</b><p>The Menu button opens a full-screen panel with image links, every service and HVT’s contact details.</p></div>
+    </div>
+    <div class="col">
+      <div class="shot"><img src="shots/d-home-footer.jpg" alt=""></div>
+      <div class="cap"><b><span class="num">12</span>Footer</b><p>Navigation, all services, credentials, full contact details and company registration details.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>HVT · Website design review</span><span>10</span></div>
+</section>
+
+<!-- 11. SERVICE + PROJECT PAGES -->
+<section class="page">
+  <div class="run"><img src="brand/hvt-logo-colour.svg" alt=""><span>Inner pages</span></div>
+  <p class="eyebrow">Service and project pages</p>
+  <h2 class="title" style="font-size:20pt">Detail for procurement teams, <span class="mute">in a consistent format.</span></h2>
+  <div class="grid4" style="flex:1;min-height:0;margin-top:2mm">
+    <div class="col"><div class="shot"><img src="shots/d-service.jpg" alt=""></div><div class="cap"><b>Service page</b><p>Each service opens with its own hero and a summary of HVT’s capability.</p></div></div>
+    <div class="col"><div class="shot"><img src="shots/d-service-scope.jpg" alt=""></div><div class="cap"><b>Scope of services</b><p>The full scope, grouped clearly, followed by photographs and an enquiry form with that service already selected.</p></div></div>
+    <div class="col"><div class="shot"><img src="shots/d-project.jpg" alt=""></div><div class="cap"><b>Project page</b><p>An overview and key facts. Where HVT has not published a detail, the page says so.</p></div></div>
+    <div class="col"><div class="shot"><img src="shots/d-project-gallery.jpg" alt=""></div><div class="cap"><b>Project gallery</b><p>HVT’s project photographs, each with a descriptive caption.</p></div></div>
+  </div>
+  <div class="foot"><span>HVT · Website design review</span><span>11</span></div>
+</section>
+
+<!-- 12. COMPANY PAGES -->
+<section class="page">
+  <div class="run"><img src="brand/hvt-logo-colour.svg" alt=""><span>Inner pages</span></div>
+  <p class="eyebrow">Company pages</p>
+  <h2 class="title" style="font-size:20pt">HVT’s story, standards <span class="mute">and track record.</span></h2>
+  <div class="grid3" style="flex:1;min-height:0;margin-top:2mm">
+    <div class="col"><div class="shot"><img src="shots/d-about.jpg" alt=""></div><div class="cap"><b>About</b><p>Company overview, vision and values, a timeline from 1994, leadership, group companies and credentials.</p></div></div>
+    <div class="col"><div class="shot"><img src="shots/d-quality.jpg" alt=""></div><div class="cap"><b>Quality &amp; Safety</b><p>SHEQ leadership, quality certification, health and safety, environment, accredited crews and the Eskom feedback.</p></div></div>
+    <div class="col"><div class="shot"><img src="shots/d-projects.jpg" alt=""></div><div class="cap"><b>Projects</b><p>All four documented projects, including the Kaalfontein community electrification work.</p></div></div>
+  </div>
+  <div class="foot"><span>HVT · Website design review</span><span>12</span></div>
+</section>
+
+<!-- 13. MOBILE -->
+<section class="page dark">
+  <div class="run"><img src="brand/hvt-logo-white.svg" alt=""><span>Mobile</span></div>
+  <div style="display:grid;grid-template-columns:62mm 1fr;gap:10mm;flex:1;min-height:0">
+    <div style="display:flex;flex-direction:column;justify-content:center">
+      <p class="eyebrow">Mobile experience</p>
+      <h2 class="title" style="font-size:20pt">Designed for the phone, <span class="mute">not just shrunk to fit.</span></h2>
+      <p class="lead" style="font-size:9.5pt">Many visitors, from site engineers to procurement teams, will first see HVT on a phone. Every section has its own mobile layout:</p>
+      <ul style="list-style:none;margin-top:5mm;display:grid;gap:2.4mm;font-size:8.8pt;color:rgba(255,255,255,.8)">
+        <li><span class="num">·</span>Large, easy-to-tap buttons</li>
+        <li><span class="num">·</span>Content stacked in a sensible reading order</li>
+        <li><span class="num">·</span>Comfortable text sizes, no sideways scrolling</li>
+        <li><span class="num">·</span>A full-screen menu with image links</li>
+        <li><span class="num">·</span>Tap-to-call and tap-to-email contact details</li>
+      </ul>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:5mm;align-items:center">
+      <div class="phone"><img src="shots/m-home-hero.jpg" alt=""></div>
+      <div class="phone"><img src="shots/m-menu.jpg" alt=""></div>
+      <div class="phone"><img src="shots/m-home-services.jpg" alt=""></div>
+      <div class="phone"><img src="shots/m-home-projects.jpg" alt=""></div>
+      <div class="phone"><img src="shots/m-home-enquiry.jpg" alt=""></div>
+    </div>
+  </div>
+  <div class="foot"><span>HVT · Website design review</span><span>13</span></div>
+</section>
+
+<!-- 14. CONTENT ACCURACY -->
+<section class="page light">
+  <div class="run"><img src="brand/hvt-logo-colour.svg" alt=""><span>Content</span></div>
+  <p class="eyebrow">Content accuracy</p>
+  <h2 class="title" style="font-size:20pt">Every fact comes from HVT’s own published material.</h2>
+  <p class="lead" style="font-size:9.8pt">All content was taken from hvt.co.za. We have not added statistics, clients, awards or testimonials that HVT does not publish. In a few places HVT’s current pages disagree with each other. In each case we used the most recent wording, shown below, and we need HVT to confirm it.</p>
+  <table style="margin-top:6mm">
+    <tr><th style="width:17%">Topic</th><th style="width:43%">What different pages of hvt.co.za currently say</th><th style="width:20%">Used on the new site</th><th>Why</th></tr>
+    <tr><td><b>BBBEE</b></td><td>Level 3 (BBBEE page and homepage headline); Level 2 (a homepage bullet); Level 1 (history page, 2018)</td><td class="used">Level 3 (BYO &amp; BWO)</td><td>Most recently updated page</td></tr>
+    <tr><td><b>CIDB grading</b></td><td>8EP / 7CE PE (About page); EP7 or 7EP (older pages)</td><td class="used">8EP · 7CE (PE)</td><td>Newer wording</td></tr>
+    <tr><td><b>ISO certification</b></td><td>ISO 9001:2015 (About page and the 2023 certification mark); ISO 9001:2008 (older text)</td><td class="used">ISO 9001:2015</td><td>Matches the current certification mark</td></tr>
+    <tr><td><b>ISO 14001 / 18001</b></td><td>“Preparing to achieve” formal accreditation (2018 wording)</td><td class="used">Not claimed</td><td>Dated; HVT to advise on current status</td></tr>
+    <tr><td><b>Service list</b></td><td>Two different lists on the two homepages</td><td class="used">The newer list of 8 services</td><td>More complete and current</td></tr>
+  </table>
+  <div class="foot"><span>HVT · Website design review</span><span>14</span></div>
+</section>
+
+<!-- 15. WHAT WE NEED -->
+<section class="page">
+  <div class="run"><img src="brand/hvt-logo-colour.svg" alt=""><span>Before launch</span></div>
+  <p class="eyebrow">What we need from HVT</p>
+  <h2 class="title" style="font-size:20pt">Please confirm or update the following <span class="mute">before the site goes live.</span></h2>
+  <div class="grid2" style="flex:none;margin-top:3mm">
+    <div class="card">
+      <h3>Credentials and figures</h3>
+      <ul class="check" style="margin-top:3mm">
+        <li><span><b>BBBEE Level 3 (BYO &amp; BWO)</b>, <b>CIDB 8EP / 7CE (PE)</b> and <b>ISO 9001:2015</b> are all current</span></li>
+        <li><span>Track-record figures still stand: <b>600+ reactive power projects</b> (3.3kV–765kV), <b>95%+ of Eskom HV shunt capacitor banks</b>, <b>8 crews accredited up to 765kV</b>, supplier to <b>Eskom’s 765kV build programme</b></span></li>
+        <li><span>Current status of ISO 14001 / ISO 45001, if HVT would like it shown</span></li>
+        <li><span>The CEO profile for Ganas (Boogie) Naidoo is up to date</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Projects, people and permissions</h3>
+      <ul class="check" style="margin-top:3mm">
+        <li><span>Permission to quote <b>Danie Bekker (Eskom)</b> in the testimonial</span></li>
+        <li><span>Any project details HVT is happy to publish, such as scope, client, location and dates (Groeipunt, Bokmakierie, Mount Edgecombe)</span></li>
+        <li><span>Which social development initiatives are still current</span></li>
+        <li><span>Confirmation that HVT’s gallery photographs may be reused on the new site</span></li>
+        <li><span>The inbox that should receive website enquiries (currently <b>info@hvt.co.za</b>)</span></li>
+        <li><span>A review of the Privacy Notice by HVT’s compliance contact, and the name of HVT’s Information Officer</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="card ink" style="margin-top:6mm;display:grid;grid-template-columns:auto 1fr;gap:6mm;align-items:center">
+    <div class="icon" style="background:var(--amber);color:var(--ink);margin:0">★</div>
+    <p style="font-size:9.4pt"><b style="color:#fff;font-family:Manrope">Recommended:</b> a short professional photo shoot at an active HVT site at dusk or early morning. Replacing the illustrative hero images with HVT’s own cinematic photography would make the site stronger still.</p>
+  </div>
+  <div class="foot"><span>HVT · Website design review</span><span>15</span></div>
+</section>
+
+<!-- 16. NEXT STEPS -->
+<section class="page cover dark">
+  <div class="bg"><img src="img/stock-gordonia-substation.jpg" alt="" style="object-position:70% 50%"></div>
+  <div class="inner">
+    <img class="logo" src="brand/hvt-logo-white.svg" alt="" style="height:12mm">
+    <div style="margin-top:auto;max-width:175mm">
+      <p class="eyebrow">Next steps</p>
+      <h1 style="font-size:30pt;margin-top:0">From review <span>to launch.</span></h1>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5mm;margin-top:9mm">
+        <div><p class="num" style="font-size:16pt">01</p><p style="font-size:9pt;color:rgba(255,255,255,.82);margin-top:1mm"><b style="color:#fff;font-family:Manrope;display:block">Review</b>Share feedback on the design, content and imagery.</p></div>
+        <div><p class="num" style="font-size:16pt">02</p><p style="font-size:9pt;color:rgba(255,255,255,.82);margin-top:1mm"><b style="color:#fff;font-family:Manrope;display:block">Confirm</b>Work through the confirmation checklist on page 15.</p></div>
+        <div><p class="num" style="font-size:16pt">03</p><p style="font-size:9pt;color:rgba(255,255,255,.82);margin-top:1mm"><b style="color:#fff;font-family:Manrope;display:block">Connect</b>Link the enquiry form to HVT’s inbox and set up hosting.</p></div>
+        <div><p class="num" style="font-size:16pt">04</p><p style="font-size:9pt;color:rgba(255,255,255,.82);margin-top:1mm"><b style="color:#fff;font-family:Manrope;display:block">Launch</b>Final checks, then go live on hvt.co.za.</p></div>
+      </div>
+    </div>
+    <p style="position:absolute;right:20mm;bottom:8mm;font-size:6.5pt;color:rgba(255,255,255,.45)">Image: illustrative, Gordonia substation by Graeme Williams, Media Club South Africa, CC BY-SA 2.0. Not an HVT project.</p>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+# Design and document assets are binary: never convert line endings
+*.eps binary
+*.pdf binary
+*.ai binary
+*.png binary
+*.jpg binary
+*.jpeg binary

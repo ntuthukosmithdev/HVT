@@ -1,0 +1,9 @@
+# QA scratch files (browser profile, screenshots, logs)
+.qa/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
