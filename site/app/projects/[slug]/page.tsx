@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Info } from "lucide-react";
 import { getProject, projects } from "@/lib/projects";
 import { PageHero } from "@/components/sections/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
@@ -49,12 +48,6 @@ export default async function ProjectPage({ params }: Props) {
               <p key={p}>{p}</p>
             ))}
           </div>
-          {project.disclosure && (
-            <p className="mt-8 flex gap-3 rounded-2xl border border-line bg-white/50 p-4 text-sm text-slate">
-              <Info size={18} className="mt-0.5 shrink-0 text-amber-ink" aria-hidden="true" />
-              {project.disclosure}
-            </p>
-          )}
         </div>
         <dl className="h-fit divide-y divide-white/10 rounded-[1.5rem] bg-ink p-7 text-white md:p-9" data-reveal>
           {project.facts.map((f) => (

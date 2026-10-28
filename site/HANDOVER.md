@@ -4,7 +4,7 @@
 
 All company content comes from **https://www.hvt.co.za**, crawled on 16 October 2026. The crawl covered all 30 pages in its WordPress sitemap plus the REST API listing.
 
-Nothing has been invented: there are no statistics, clients, awards, testimonials, dates or capabilities that HVT does not publish. Where HVT has not published a fact (for example a project's scope or client), the site leaves it out and says so on the project page.
+Nothing has been invented: there are no statistics, clients, awards, testimonials, dates or capabilities that HVT does not publish. Where HVT has not published a fact (for example a project's scope or client), the site simply leaves it out.
 
 ### Where official pages disagree
 
@@ -36,7 +36,7 @@ Nothing has been invented: there are no statistics, clients, awards, testimonial
    - **Mount Edgecombe:** HVT's exact lighting scope.
 5. **Electrification service:** HVT lists "Electrification" as a service but has no page for it. The site describes it using the 11–132kV overhead lines and cabling items from the site-services page.
 6. **Subsidiary name:** "Electrovaya Contruction" is spelled this way on hvt.co.za. This site uses "Electrovaya Construction".
-7. **Leadership:** the CEO biography (Ganas "Boogie" Naidoo) comes from /business-leaders/, last updated in 2018. Confirm it is current.
+7. **Leadership:** the About page carries a message from the Chief Executive, Fred Leketi, supplied by the client. It announces new ownership, so the ownership-related credentials (BBBEE "BYO & BWO" status) and the 2005–2007 ownership entries in the About timeline should be reconfirmed.
 8. **Departmental contacts:** hvt.co.za lists personal contacts (Heinrich, Thabo and Neelan/Ntsane), some on lpp.co.za and htsa.co.za domains. This site routes every enquiry to info@hvt.co.za. Add named contacts only if HVT wants them.
 9. **Social development:** these initiatives date from 2018–2023. Confirm which are still current.
    - Solidarity Buckets

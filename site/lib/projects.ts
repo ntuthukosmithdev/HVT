@@ -22,8 +22,6 @@ export type Project = {
   /** Official page this content was taken from (for maintainers; not rendered) */
   sourceUrl: string;
   external?: { label: string; href: string };
-  /** Shown on the page so readers know what HVT has and hasn't published */
-  disclosure?: string;
 };
 
 export const projects: Project[] = [
@@ -52,7 +50,6 @@ export const projects: Project[] = [
       images.groeipuntCrane,
     ],
     sourceUrl: "https://www.hvt.co.za/groeipunt-substation/",
-    disclosure: "HVT’s detailed scope, contract dates and location for this project are not published.",
   },
   {
     slug: "bokmakierie-substation",
@@ -79,7 +76,6 @@ export const projects: Project[] = [
       images.bokmakierieYard,
     ],
     sourceUrl: "https://www.hvt.co.za/bokmakierie-substation/",
-    disclosure: "HVT publishes photographs of this project only. The client, location, voltage and dates are not published.",
   },
   {
     slug: "mount-edgecombe-interchange",
@@ -99,7 +95,6 @@ export const projects: Project[] = [
     image: images.mountEdgecombeAerial,
     gallery: [images.mountEdgecombeAerial, images.mountEdgecombeNight],
     sourceUrl: "https://www.hvt.co.za/mount-edgecombe/",
-    disclosure: "HVT’s published description refers to lighting the interchange. Its detailed scope is not published.",
   },
   {
     slug: "kaalfontein-containers",

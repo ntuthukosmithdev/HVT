@@ -7,7 +7,7 @@ import { ButtonLink } from "@/components/ui/Button";
 
 export function Footer() {
   return (
-    <footer className="mt-[2vw] rounded-t-[1.5rem] bg-navy-950 text-white">
+    <footer className="mt-[2vw] bg-navy-950 text-white">
       <div className="container-x pb-10 pt-14 md:pt-20">
         {/* Row 1: pill navigation bar, the reference's footer signature */}
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">

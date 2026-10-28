@@ -98,19 +98,29 @@ export default function AboutPage() {
       <section className="inset-card bg-mist">
         <div className="container-x section-y grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
           <div>
-            <SectionHeading eyebrow="Leadership" title="Ganas (Boogie) Naidoo," muted="Chief Executive Officer." size="md" />
+            <SectionHeading eyebrow="Message from the Chief Executive" title="A new chapter" muted="for HVT." size="md" />
             <div className="mt-6 space-y-4 text-[1.02rem] leading-relaxed text-ink/75" data-reveal>
               <p>
-                Boogie is a classic entrepreneur with an instinct for balancing a deal and customer relationships.
-                Following an early career in the trade union movement, he developed a sound appreciation of the South
-                African business environment.
+                For more than thirty years HVT has built, maintained and protected the high voltage infrastructure that
+                keeps Southern Africa’s power flowing. Our people have installed equipment at every voltage level up to
+                765 kV, worked in fourteen African countries and earned the trust of Eskom, regional utilities and some of
+                the continent’s largest mining and industrial companies.
               </p>
               <p>
-                His entry to the electrical engineering sector was via Baymont Power Projects in 2000. He now owns a stake
-                in HVT, Transformco and other companies, and provides leadership to these companies as CEO of HVT,
-                Transformco and HTSA Power.
+                HVT has now entered a new chapter under new ownership. Our name, our teams, our contracts and our
+                commitment to our customers continue unchanged. What we add is sharper governance, stronger investment in
+                people and systems, and a clear focus on the next decade of grid growth: transmission expansion,
+                substation renewal, renewable energy integration and dependable maintenance services.
+              </p>
+              <p className="font-medium text-ink">
+                Our promise is simple. We take on tough technical problems, we deliver them safely, and we stand behind
+                our work.
               </p>
             </div>
+            <p className="mt-8 border-l-2 border-amber pl-4" data-reveal>
+              <span className="block font-display text-sm font-bold uppercase tracking-[0.16em] text-ink">Fred Leketi</span>
+              <span className="mt-1 block text-sm text-slate">Chief Executive Officer</span>
+            </p>
           </div>
           <div data-reveal>
             <p className="eyebrow text-amber-ink">Group companies</p>
