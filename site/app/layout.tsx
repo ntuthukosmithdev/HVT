@@ -4,7 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { RevealObserver } from "@/components/ui/RevealObserver";
-import { company, siteUrl } from "@/lib/site";
+import { chinaOffice, company, siteUrl } from "@/lib/site";
 
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -56,6 +56,17 @@ const organisation = {
     addressLocality: `${company.contact.address.suburb}, ${company.contact.address.city}`,
     addressRegion: company.contact.address.province,
     addressCountry: "ZA",
+  },
+  location: {
+    "@type": "Place",
+    name: `${company.name} ${chinaOffice.label}`,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: `${chinaOffice.room}, ${chinaOffice.street}`,
+      addressLocality: `${chinaOffice.district}, ${chinaOffice.city}`,
+      addressRegion: chinaOffice.province,
+      addressCountry: "CN",
+    },
   },
   areaServed: "Southern Africa",
 };

@@ -46,6 +46,20 @@ export const company = {
 
 export const addressLine = `${company.contact.address.street}, ${company.contact.address.suburb}, ${company.contact.address.city}, ${company.contact.address.province}, ${company.contact.address.country}`;
 
+/** HVT's office in China (supplied by HVT, November 2026). */
+export const chinaOffice = {
+  label: "China office",
+  room: "Room 1406, Zhixin Center",
+  street: "Jinxiu Road",
+  district: "Lucheng District",
+  city: "Wenzhou City",
+  province: "Zhejiang Province",
+  country: "P.R. China",
+  line: "Room 1406, Zhixin Center, Jinxiu Road, Lucheng District, Wenzhou City, Zhejiang Province, P.R. China",
+  mapsUrl:
+    "https://www.google.com/maps/search/?api=1&query=Zhixin+Center%2C+Jinxiu+Road%2C+Lucheng+District%2C+Wenzhou%2C+Zhejiang%2C+China",
+} as const;
+
 export type NavItem = { label: string; href: string };
 
 export const mainNav: NavItem[] = [

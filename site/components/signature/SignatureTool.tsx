@@ -5,7 +5,6 @@ import { Check, Code2, Copy, Smartphone } from "lucide-react";
 import {
   EMPTY_DETAILS,
   EXAMPLE_DETAILS,
-  SIGNATURE_LOGO_PATH,
   buildSignatureHtml,
   buildSignatureText,
   isValidEmail,
@@ -83,7 +82,7 @@ export function SignatureTool() {
 
   const isExample = TEXT_FIELDS.every((k) => !details[k]);
   const shown = isExample ? { ...EXAMPLE_DETAILS, address: details.address, legal: details.legal, disclaimer: details.disclaimer } : details;
-  const previewHtml = buildSignatureHtml(shown, SIGNATURE_LOGO_PATH);
+  const previewHtml = buildSignatureHtml(shown, "");
 
   const emailInvalid = !!details.email && !isValidEmail(details.email);
   const emailNotHvt = !!details.email && !emailInvalid && !/@hvt\.co\.za$/i.test(details.email);

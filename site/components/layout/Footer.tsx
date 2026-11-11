@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { company, addressLine, mainNav, secondaryNav } from "@/lib/site";
+import { company, addressLine, chinaOffice, mainNav, secondaryNav } from "@/lib/site";
 import { services } from "@/lib/services";
 import { ButtonLink } from "@/components/ui/Button";
 
@@ -92,6 +92,13 @@ export function Footer() {
                   <span className="block font-semibold text-white">Head office</span>
                   {addressLine}
                   <span className="mt-2 block text-sm text-white/50">Postal: {company.contact.postal}</span>
+                </address>
+              </li>
+              <li className="flex gap-3 text-white/70">
+                <MapPin size={18} className="mt-0.5 shrink-0 text-amber" aria-hidden="true" />
+                <address className="not-italic">
+                  <span className="block font-semibold text-white">{chinaOffice.label}</span>
+                  {chinaOffice.line}
                 </address>
               </li>
             </ul>

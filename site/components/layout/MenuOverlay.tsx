@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { ArrowUpRight, Mail, MapPin, Phone, X } from "lucide-react";
-import { company, addressLine } from "@/lib/site";
+import { company, addressLine, chinaOffice } from "@/lib/site";
 import { services } from "@/lib/services";
 import { images } from "@/lib/images";
 
@@ -156,7 +156,17 @@ export function MenuOverlay({ open, onClose, pathname }: Props) {
                   </li>
                   <li className="flex gap-3 text-slate">
                     <MapPin size={18} className="mt-0.5 shrink-0 text-amber-ink" aria-hidden="true" />
-                    {addressLine}
+                    <span>
+                      <span className="block font-semibold text-ink">Head office</span>
+                      {addressLine}
+                    </span>
+                  </li>
+                  <li className="flex gap-3 text-slate">
+                    <MapPin size={18} className="mt-0.5 shrink-0 text-amber-ink" aria-hidden="true" />
+                    <span>
+                      <span className="block font-semibold text-ink">{chinaOffice.label}</span>
+                      {chinaOffice.line}
+                    </span>
                   </li>
                 </ul>
               </div>

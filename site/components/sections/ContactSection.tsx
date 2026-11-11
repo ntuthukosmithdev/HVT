@@ -1,5 +1,5 @@
 import { Mail, MapPin, Phone, Printer } from "lucide-react";
-import { company, addressLine } from "@/lib/site";
+import { company, addressLine, chinaOffice } from "@/lib/site";
 import { EnquiryForm } from "@/components/forms/EnquiryForm";
 
 type Props = { headingLevel?: "h1" | "h2"; defaultService?: string };
@@ -64,6 +64,24 @@ export function ContactSection({ headingLevel: H = "h2", defaultService }: Props
                     Head office <span className="sr-only">(opens Google Maps)</span>
                   </span>
                   <span className="font-semibold leading-snug">{addressLine}</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href={chinaOffice.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4 rounded-2xl border border-line bg-white/60 p-4 transition-colors hover:border-ink"
+              >
+                <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-ink text-amber" aria-hidden="true">
+                  <MapPin size={20} />
+                </span>
+                <span>
+                  <span className="block text-xs font-bold uppercase tracking-[0.12em] text-slate">
+                    {chinaOffice.label} <span className="sr-only">(opens Google Maps)</span>
+                  </span>
+                  <span className="font-semibold leading-snug">{chinaOffice.line}</span>
                 </span>
               </a>
             </li>
