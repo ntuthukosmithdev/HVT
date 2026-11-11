@@ -1,4 +1,4 @@
-import { company } from "./site";
+import { addressLine, chinaOffice, company } from "./site";
 
 /**
  * Builds the official HVT email signature.
@@ -15,7 +15,10 @@ export type SignatureDetails = {
   email: string;
   mobile: string;
   direct: string;
+  /** Head office (Midrand) address */
   address: boolean;
+  /** China office (Wenzhou) address */
+  china: boolean;
   legal: boolean;
   disclaimer: boolean;
 };
@@ -36,7 +39,10 @@ export const SIGNATURE_SERVICES = [
 ];
 
 const SITE = "www.hvt.co.za";
-const ADDRESS = "128 Belvedere Road, Glen Austin, Midrand, Gauteng, South Africa";
+const OFFICES = [
+  { key: "address", label: "Head office", line: addressLine },
+  { key: "china", label: chinaOffice.label, line: chinaOffice.line },
+] as const;
 const LEGAL = `${company.legalName} · Reg. no. ${company.registrationNumber}`;
 const DISCLAIMER =
   "This email and any attachments are confidential and intended only for the addressee. If you have received it in error, please tell the sender and delete it. High Voltage Technology SA (Pty) Ltd processes personal information in line with the Protection of Personal Information Act (POPIA).";
@@ -50,6 +56,7 @@ export const EXAMPLE_DETAILS: SignatureDetails = {
   mobile: "+27 (0)82 000 0000",
   direct: "",
   address: true,
+  china: true,
   legal: true,
   disclaimer: true,
 };
@@ -62,6 +69,7 @@ export const EMPTY_DETAILS: SignatureDetails = {
   mobile: "",
   direct: "",
   address: true,
+  china: true,
   legal: true,
   disclaimer: true,
 };
@@ -88,9 +96,13 @@ export function buildSignatureHtml(d: SignatureDetails, assetBase: string = SIGN
   if (d.email) rows.push(contactRow("E", d.email, `mailto:${d.email}`));
   rows.push(contactRow("W", SITE, `https://${SITE}`));
 
-  const address = d.address
-    ? `<tr><td style="padding:6px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:15px;color:${C.muted};">${esc(ADDRESS)}</td></tr>`
-    : "";
+  const offices = OFFICES.filter((o) => d[o.key]);
+  const address = offices
+    .map(
+      (o, i) =>
+        `<tr><td style="padding:${i === 0 ? 6 : 3}px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:15px;color:${C.muted};"><span style="font-weight:bold;color:${C.text};">${esc(o.label)}</span>&nbsp;&nbsp;${esc(o.line)}</td></tr>`,
+    )
+    .join("\n");
   const legal = d.legal
     ? `<tr><td colspan="3" style="padding:12px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:10px;line-height:14px;color:${C.muted};">${esc(LEGAL)}</td></tr>`
     : "";

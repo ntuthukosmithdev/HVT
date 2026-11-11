@@ -81,7 +81,7 @@ export function SignatureTool() {
   const fallbackRef = useRef<HTMLTextAreaElement>(null);
 
   const isExample = TEXT_FIELDS.every((k) => !details[k]);
-  const shown = isExample ? { ...EXAMPLE_DETAILS, address: details.address, legal: details.legal, disclaimer: details.disclaimer } : details;
+  const shown = isExample ? { ...EXAMPLE_DETAILS, address: details.address, china: details.china, legal: details.legal, disclaimer: details.disclaimer } : details;
   const previewHtml = buildSignatureHtml(shown, "");
 
   const emailInvalid = !!details.email && !isValidEmail(details.email);
@@ -255,7 +255,8 @@ export function SignatureTool() {
               <legend className="mb-2 text-sm font-semibold">Include</legend>
               {(
                 [
-                  ["address", "Head office address"],
+                  ["address", "Head office address (Midrand)"],
+                  ["china", "China office address (Wenzhou)"],
                   ["legal", "Company registration line"],
                   ["disclaimer", "Confidentiality notice"],
                 ] as const
