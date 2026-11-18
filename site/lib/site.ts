@@ -38,7 +38,7 @@ export const company = {
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=High+Voltage+Technology+SA+Pty+Ltd%2C+128+Belvedere+Road%2C+Glen+Austin%2C+Midrand",
   },
   credentials: {
-    bbbee: { value: "Level 3", short: "BBBEE Level 3", detail: "BBBEE contributor (BYO & BWO)" },
+    bbbee: { value: "Level 2", short: "BBBEE Level 2", detail: "BBBEE contributor (BYO & BWO)" },
     cidb: { value: "8EP · 7CE", short: "CIDB 8EP · 7CE", detail: "CIDB grading (PE)" },
     iso: { value: "ISO 9001:2015", short: "ISO 9001:2015", detail: "Quality management certification" },
   },

@@ -10,7 +10,7 @@ Nothing has been invented: there are no statistics, clients, awards, testimonial
 
 | Topic | Conflicting statements on hvt.co.za | Used on this site | Why |
 | --- | --- | --- | --- |
-| **BBBEE** | Level 3 (/bbbee/, updated 2026-09-29, and homepage headline); Level 2 (homepage bullet); Level 1, 100% black owned (/history/, 2018) | **Level 3 (BYO & BWO)** | Newest page and the homepage headline |
+| **BBBEE** | Level 3 (/bbbee/, updated 2026-09-29, and homepage headline); Level 2 (homepage bullet); Level 1, 100% black owned (/history/, 2018) | **Level 2 (BYO & BWO)** | Client instruction (2026-11-18) |
 | **CIDB** | 8EP PE / 7CE PE (/about-us/, /home/); EP7 / 7EP (front page "/", /capability/, 2017) | **8EP · 7CE (PE)** | Newer wording |
 | **ISO** | ISO 9001:2015 (/about-us/, /home/, and the 2023 certification mark on both homepages); ISO 9001:2008 (front page text, /capability/) | **ISO 9001:2015** | Matches the 2023 certification mark |
 | **ISO 14001 / 18001** | "Compliant to ISO 14001 … preparing to achieve ISO 14001 and ISO 18001 formal accreditation" (/about-us/, 2018) | **Not claimed** | Dated; ISO 18001 has been replaced by ISO 45001 |
@@ -20,7 +20,7 @@ Nothing has been invented: there are no statistics, clients, awards, testimonial
 ### HVT should confirm before launch
 
 1. **Credentials:**
-   - BBBEE Level 3 (BYO & BWO), CIDB 8EP/7CE (PE) and ISO 9001:2015 are still current.
+   - BBBEE Level 2 (BYO & BWO), CIDB 8EP/7CE (PE) and ISO 9001:2015 are still current.
    - ISO certificate expiry date and the certification body.
 2. **Figures** published by HVT and reused here:
    - "over 600 reactive power projects from 3.3kV to 765kV"
